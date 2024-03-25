@@ -49,13 +49,10 @@ class ChangeNote(object):
                 try:
                     with open('notes.json', 'r') as json_file_read:
                         data = json_file_read.readlines()
-                        print("test1")
                         for p in data:
                             json_str = json.loads(p)
-                            print("test2")
                             for j in json_str:
                                 if j == usr_id_input:
-                                    print("test3")
                                     id_old = j
                                     note_z_ch_b = json_str[f'{j}'][0]['Заголовок']
                                     create_time =  json_str[f'{j}'][0]['Время создания']
@@ -63,7 +60,6 @@ class ChangeNote(object):
                     with open('notes.json', 'w') as json_file:
                         for p in data:
                             if usr_id_input in p:
-                                print("test4")
                                 note_time = str(datetime.datetime.now())
                                 data_note = {}
                                 data_note[id_old] = []
@@ -75,7 +71,6 @@ class ChangeNote(object):
                                 })
                             else:
                                 json_file.write(p)
-                                print("test5")
 
                     with open('notes.json', 'a', encoding='utf-8') as outfile:
                         json.dump(data_note, outfile)
